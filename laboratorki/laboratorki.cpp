@@ -27,67 +27,67 @@ int main() {
 		cout << endl;
 
 		switch (x) {
-		case 1:
-			print("Введи a: ");
-			cin >> a;
-			print("Введи b: ");
-			cin >> b;
-			print("Введи c: ");
-			cin >> c;
-			lab1(a, b, c);
-			break;
-		case 2:
-			print("Проверим дробность числа\nВведи a: ");
-			cin >> a;
-			lab2(a);
-			cout << endl;
-			print("Я - калькулятор\nВведи число a: ");
-			cin >> a;
-			print("Введи число b: ");
-			cin >> b;
-			print("Выбери действие: ");
-			cin >> d;
-			lab2(a, b, d);
-			cout << endl;
-			print("Сыграй с логическим выражением\nВведи число 1: ");
-			cin >> a;
-			print("Введи число 2: ");
-			cin >> b;
-			print("Введи число 3: ");
-			cin >> c;
-			lab2(a, b, c, e, f, g, i);
-			break;
-		case 3:
-			print("Ты попал в зацикленное пространство. Выбери цикл: ");
-			cin >> x;
-			switch (x) {
 			case 1:
-				lab3(x);
-				break;
+				print("Введи a: ");
+				cin >> a;
+				print("Введи b: ");
+				cin >> b;
+				print("Введи c: ");
+				cin >> c;
+				lab1(a, b, c);
+			break;
 			case 2:
-				lab3(x, phi, phi1);
+				print("Проверим дробность числа\nВведи a: ");
+				cin >> a;
+				lab2(a);
+				cout << endl;
+				print("Я - калькулятор\nВведи число a: ");
+				cin >> a;
+				print("Введи число b: ");
+				cin >> b;
+				print("Выбери действие: ");
+				cin >> d;
+				lab2(a, b, d);
+				cout << endl;
+				print("Сыграй с логическим выражением\nВведи число 1: ");
+				cin >> a;
+				print("Введи число 2: ");
+				cin >> b;
+				print("Введи число 3: ");
+				cin >> c;
+				lab2(a, b, c, e, f, g, i);
 				break;
 			case 3:
-				lab3(x, pi, partial, a, b);
+				print("Ты попал в зацикленное пространство. Выбери цикл: ");
+				cin >> x;
+				switch (x) {
+					case 1:
+						lab3(x);
+						break;
+					case 2:
+						lab3(x, phi, phi1);
+						break;
+					case 3:
+						lab3(x, pi, partial, a, b);
+						break;
+					default:
+						print("О нет, ты сломал цикл!");
+						break;
+				}
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 7:
+				break;
+			case 8:
 				break;
 			default:
-				print("О нет, ты сломал цикл!");
+				print("У меня нет такого задания. Попробуй ещё раз)");
 				break;
-			}
-			break;
-		case 4:
-			break;
-		case 5:
-			break;
-		case 6:
-			break;
-		case 7:
-			break;
-		case 8:
-			break;
-		default:
-			print("У меня нет такого задания. Попробуй ещё раз)");
-			break;
 		}
 	return 0;
 }
@@ -116,23 +116,23 @@ int lab2(float a) {
 
 int lab2(float a, float b, char d) {
 	switch (d) {
-	case '+':
-		cout << a << "+" << b << "=" << a + b << endl;
-		break;
-	case '-':
-		cout << a << "-" << b << "=" << a - b << endl;
-		break;
-	case '*':
-		cout << a << "*" << b << "=" << a * b << endl;
-		break;
-	case '/':
-		cout << a << "/" << b << "=" << a / b << endl;
-		break;
-	default:
-		print("Меня ещё такому не научили. Попробуй снова)");
-		break;
-	return 0;
+		case '+':
+			cout << a << "+" << b << "=" << a + b << endl;
+			break;
+		case '-':
+			cout << a << "-" << b << "=" << a - b << endl;
+			break;
+		case '*':
+			cout << a << "*" << b << "=" << a * b << endl;
+			break;
+		case '/':
+			cout << a << "/" << b << "=" << a / b << endl;
+			break;
+		default:
+			print("Меня ещё такому не научили. Попробуй снова)");
+			break;
 	}
+	return 0;
 }
 
 int lab2(float a, float b, float c, bool e, bool f, bool g, bool i) {
