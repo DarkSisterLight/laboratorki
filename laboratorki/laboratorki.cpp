@@ -8,7 +8,7 @@ int lab2(float);
 int lab2(float a, float b, char d);
 bool lab2(float a, float b, float c, bool e, bool f, bool g);
 int lab3(short x);
-int lab3(short x, int phi, int phi1);
+int lab3(int fib);
 int lab3(short x, double pi, double partial, float a, float b);
 
 int main() {
@@ -18,9 +18,9 @@ int main() {
 		short x;
 		float a = 0, b = 0, c = 0;
 		char d;
-		int phi, phi1;
+		int fib = 0;
 		double pi = 0.0, partial = 0.0;
-		bool e = false, f = false, g = false, i = false;
+		bool e = false, f = false, g = false;
 
 		print("Выбери номер задания: ");
 		cin >> x;
@@ -46,7 +46,6 @@ int main() {
 
 			print("Сыграй с логическим выражением\nВведите три любых целых числа: ");
 			cin >> a >> b >> c;
-			lab2(a, b, c, e, f, g);
 			cout << "Это выражение оказалось: " << lab2(a, b, c, e, f, g) << endl;
 			break;
 		case 3:
@@ -57,7 +56,12 @@ int main() {
 				lab3(x);
 				break;
 			case 2:
-				//lab3(x, phi, phi1);
+				print("Сколько чисел из ряда Фибоначчи хочешь увидеть?");
+				cin >> fib;
+				for (fib; fib >= 0; fib--) 
+				{
+					cout << lab3(fib) << endl;
+				}
 				break;
 			case 3:
 				lab3(x, pi, partial, a, b);
@@ -129,7 +133,7 @@ bool lab2(float a, float b, float c, bool e, bool f, bool g) {
 }
 
 int lab3(short x) {
-	for (short x = 10; x > 0; x--) 
+	for (x = 8; x > 0; x--) 
 	{
 		cout << "4 в степени " << x << " = " << pow(4, x) <<endl;
 	}
@@ -142,17 +146,11 @@ int lab3(short x) {
 	return 0;
 }
 
-//int lab3(short x, int phi, int phi1) {
-//	print("Сколько чисел из ряда Фибоначчи хочешь увидеть?");
-//	cin >> x;
-//	for (x; x > 0; x--)
-//	{
-//		phi = (1 + sqrt(5)) / 2;
-//		phi1 = pow(phi, x) / sqrt(5);
-//		cout << phi1 << endl;
-//	}
-//	return 0;
-//}
+int lab3(int fib) {
+	if (fib <= 1)
+		return fib;
+	return lab3(fib - 1) + lab3(fib - 2);
+}
 
 int lab3(short x, double pi, double partial, float a, float b) {
 	print("Хочу попробовать посчитать Pi методом Лейбница. Укажи точность числом: ");
