@@ -3,10 +3,10 @@
 using namespace std;
 
 void print(string words);
-int lab1(float, float, float);
+float lab1(float, float, float);
 int lab2(float);
 int lab2(float a, float b, char d);
-int lab2(float a, float b, float c, bool e, bool f, bool g, bool i);
+bool lab2(float a, float b, float c, bool e, bool f, bool g);
 int lab3(short x);
 int lab3(short x, int phi, int phi1);
 int lab3(short x, double pi, double partial, float a, float b);
@@ -14,7 +14,7 @@ int lab3(short x, double pi, double partial, float a, float b);
 int main() {
 	setlocale(LC_ALL, "RU");
 	print("Гагарин Юрий Алексеевич");
-	print("Дата рождения: 16.04.1961\n");
+	print("Дата полёта: 16.04.1961\n");
 		short x;
 		float a = 0, b = 0, c = 0;
 		char d;
@@ -28,34 +28,26 @@ int main() {
 
 		switch (x) {
 		case 1:
-			print("Введи a: ");
-			cin >> a;
-			print("Введи b: ");
-			cin >> b;
-			print("Введи c: ");
-			cin >> c;
-			lab1(a, b, c);
+			print("Введи три числа: ");
+			cin >> a >> b >> c;
+			cout << lab1(a, b, c);
 			break;
 		case 2:
-			print("Проверим дробность числа\nВведи a: ");
+			print("Проверим дробность числа\nВведи его: ");
 			cin >> a;
 			lab2(a);
 			cout << endl;
-			print("Я - калькулятор\nВведи число a: ");
-			cin >> a;
-			print("Введи число b: ");
-			cin >> b;
+
+			print("Я - калькулятор\nВведи два числа: ");
+			cin >> a >> b;
 			print("Выбери действие: ");
 			cin >> d;
-			lab2(a, b, d);
-			cout << endl;
-			print("Сыграй с логическим выражением\nВведи число 1: ");
-			cin >> a;
-			print("Введи число 2: ");
-			cin >> b;
-			print("Введи число 3: ");
-			cin >> c;
-			lab2(a, b, c, e, f, g, i);
+			cout << lab2(a, b, d) << endl;
+
+			print("Сыграй с логическим выражением\nВведите три любых целых числа: ");
+			cin >> a >> b >> c;
+			lab2(a, b, c, e, f, g);
+			cout << "Это выражение оказалось: " << lab2(a, b, c, e, f, g) << endl;
 			break;
 		case 3:
 			print("Ты попал в зацикленное пространство. Выбери цикл: ");
@@ -65,7 +57,7 @@ int main() {
 				lab3(x);
 				break;
 			case 2:
-				lab3(x, phi, phi1);
+				//lab3(x, phi, phi1);
 				break;
 			case 3:
 				lab3(x, pi, partial, a, b);
@@ -96,9 +88,8 @@ void print(string words) {
 	cout << words << endl;
 }
 
-int lab1(float a, float b, float c) {
-	cout << "Результат: " << (a + b * c) - 3.14159 << endl;
-	return 0;
+float lab1(float a, float b, float c) {
+	return ((a + b * c) - 3.14519);
 }
 
 int lab2(float a) {
@@ -117,31 +108,24 @@ int lab2(float a) {
 int lab2(float a, float b, char d) {
 	switch (d) {
 	case '+':
-		cout << a << "+" << b << "=" << a + b << endl;
-		break;
+		return a + b;
 	case '-':
-		cout << a << "-" << b << "=" << a - b << endl;
-		break;
+		return a - b;
 	case '*':
-		cout << a << "*" << b << "=" << a * b << endl;
-		break;
+		return a * b;
 	case '/':
-		cout << a << "/" << b << "=" << a / b << endl;
-		break;
+		return a / b;
 	default:
 		print("Меня ещё такому не научили. Попробуй снова)");
-		break;
-	return 0;
+		return 0;
 	}
 }
 
-int lab2(float a, float b, float c, bool e, bool f, bool g, bool i) {
+bool lab2(float a, float b, float c, bool e, bool f, bool g) {
 	e = (a > 0);
 	f = (b >= 0);
 	g = (c == 0);
-	i = a && (!b && !c);
-	cout << "Это выражение оказалось: " << i << endl;
-	return 0;
+	return (e && (!f && !g));
 }
 
 int lab3(short x) {
@@ -158,17 +142,17 @@ int lab3(short x) {
 	return 0;
 }
 
-int lab3(short x, int phi, int phi1) {
-	print("Сколько чисел из ряда Фибоначчи хочешь увидеть?");
-	cin >> x;
-	for (x; x > 0; x--)
-	{
-		phi = (1 + sqrt(5)) / 2;
-		phi1 = pow(phi, x) / sqrt(5);
-		cout << phi1 << endl;
-	}
-	return 0;
-}
+//int lab3(short x, int phi, int phi1) {
+//	print("Сколько чисел из ряда Фибоначчи хочешь увидеть?");
+//	cin >> x;
+//	for (x; x > 0; x--)
+//	{
+//		phi = (1 + sqrt(5)) / 2;
+//		phi1 = pow(phi, x) / sqrt(5);
+//		cout << phi1 << endl;
+//	}
+//	return 0;
+//}
 
 int lab3(short x, double pi, double partial, float a, float b) {
 	print("Хочу попробовать посчитать Pi методом Лейбница. Укажи точность числом: ");
