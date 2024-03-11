@@ -9,17 +9,18 @@ int lab2(float a, float b, char d);
 bool lab2(float a, float b, float c, bool e, bool f, bool g);
 int lab3(short x);
 int lab3(int fib);
-int lab3(short x, double pi, double partial, float a, float b);
+float lab3(short x, double pi, float a);
 
 int main() {
 	setlocale(LC_ALL, "RU");
 	print("Гагарин Юрий Алексеевич");
 	print("Дата полёта: 16.04.1961\n");
+
 		short x;
 		float a = 0, b = 0, c = 0;
 		char d;
 		int fib = 0;
-		double pi = 0.0, partial = 0.0;
+		double pi = 0.0;
 		bool e = false, f = false, g = false;
 
 		print("Выбери номер задания: ");
@@ -64,7 +65,9 @@ int main() {
 				}
 				break;
 			case 3:
-				lab3(x, pi, partial, a, b);
+				print("Хочу попробовать посчитать Pi методом Лейбница. Укажи точность числом: ");
+				cin >> x;
+				cout << "Мне почти удалось посчитать Pi: " << lab3(x, pi, a);
 				break;
 			default:
 				print("О нет, ты сломал цикл!");
@@ -152,20 +155,15 @@ int lab3(int fib) {
 	return lab3(fib - 1) + lab3(fib - 2);
 }
 
-int lab3(short x, double pi, double partial, float a, float b) {
-	print("Хочу попробовать посчитать Pi методом Лейбница. Укажи точность числом: ");
-	cin >> x;
-	b = 1;
-	if (x>0)
-	{
-		for (a; a < x; a++)
+float lab3(short x, double pi, float a) {
+	if (x > 0) {
+		for (a; a <= x; a++)
 		{
-			partial += b / (a * 2.0 + 1.0);
-			b *= -1;
-			pi = 4 * partial;
+			pi = pi + 4.0 * pow(-1, a) / (a * 2.0 + 1.0);
 		}
-		cout << "Мне почти удалось посчитать Pi: ";
-		printf("%.30f\n", pi);
+		return pi;
 	}
-	return 0;
+	else {
+		return 0;
+	}
 }
