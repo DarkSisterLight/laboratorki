@@ -5,11 +5,17 @@ using namespace std;
 void print(string words);
 float lab1(float, float, float);
 int lab2(float);
-int lab2(float a, float b, char d);
+float lab2(float a, float b, char d);
 bool lab2(float a, float b, float c, bool e, bool f, bool g);
 int lab3(short x);
 int lab3(int fib);
-float lab3(short x, double pi, float a);
+double lab3(short x, double pi, float a);
+double lab4(short x, float a, float b, float c);
+int lab4(short x);
+float lab4(float a, float b);
+int lab4(int hour, int min, int sec);
+
+double getPi = 3.14591;
 
 int main() {
 	setlocale(LC_ALL, "RU");
@@ -75,6 +81,29 @@ int main() {
 			}
 			break;
 		case 4:
+			print("Тут много всего. Выбери какое-то задание: ");
+			cin >> x;
+			switch (x) {
+			case 1:
+				cout << "Получилось: " << lab4(x, a, b, c) << endl;
+				break;
+			case 2:
+				print("Факториал какого числа хочешь увидеть?");
+				cin >> x;
+				cout << "Факториал " << x << "равен " << lab4(x) << endl;
+				break;
+			case 3:
+				print("Введи 2 числа, а я выберу наименьшее");
+				cin >> a >> b;
+				cout << "Это число наименьшее: " << lab4(a, b) << endl;
+				break;
+			case 4:
+				cout << lab4(a, b, c) << "секунд" << endl;
+				break;
+			default:
+				print("Упс, у меня здесь повреждённые фракменты памяти!");
+				break;
+			}
 			break;
 		case 5:
 			break;
@@ -96,7 +125,7 @@ void print(string words) {
 }
 
 float lab1(float a, float b, float c) {
-	return ((a + b * c) - 3.14519);
+	return ((a + b * c) - getPi);
 }
 
 int lab2(float a) {
@@ -112,7 +141,7 @@ int lab2(float a) {
 	return 0;
 }
 
-int lab2(float a, float b, char d) {
+float lab2(float a, float b, char d) {
 	switch (d) {
 	case '+':
 		return a + b;
@@ -150,12 +179,13 @@ int lab3(short x) {
 }
 
 int lab3(int fib) {
-	if (fib <= 1)
+	if (fib <= 1) {
 		return fib;
+	}
 	return lab3(fib - 1) + lab3(fib - 2);
 }
 
-float lab3(short x, double pi, float a) {
+double lab3(short x, double pi, float a) {
 	if (x > 0) {
 		for (a; a <= x; a++)
 		{
@@ -166,4 +196,59 @@ float lab3(short x, double pi, float a) {
 	else {
 		return 0;
 	}
+}
+
+double lab4(short x, float a, float b, float c) {
+	print("Я могу посчитать площади следующих фигур:");
+	print("1 - треугольник по стороне и высоте.");
+	print("2 - треугольник по 3-м сторонам.");
+	print("3 - прямоугольник по 2-м сторонам.");
+	print("4 - окружность через радиус.");
+	print("Выбирай: ");
+	cin >> x;
+	float Pperimeter = a * b * c / 2;
+	switch (x) {
+	case 1:
+		print("Введи основание и высоту треугольника: ");
+		cin >> a >> b;
+		return a * b / 2;
+	case 2:
+		print("Введи последовательно 3 стороны треугольника: ");
+		cin >> a >> b >> c;
+		return sqrt(Pperimeter * (Pperimeter - a) * (Pperimeter - b) * (Pperimeter - c));
+	case 3:
+		print("Введи 2 стороны прямоугольника: ");
+		cin >> a >> b;
+		return a*b;
+	case 4:
+		print("Введи радиус окружности: ");
+		cin >> a;
+		return getPi * pow(a, 2);
+	default:
+		print("У меня нет такой формулы. Попробуй снова)");
+		return 0;
+	}
+}
+
+int lab4(short x) {
+	if (x == 0) {
+		return 1;
+	}
+	return x * lab4(x - 1);
+}
+
+float lab4(float a, float b) {
+	if (a > b)
+	{
+		return b;
+	}
+	return a;
+}
+
+int lab4(int hour, int min, int sec) {
+	print("Введи сначала кол-во часов, потом минут и секунд:");
+	cin >> hour;
+	cin >> min;
+	cin >> sec;
+	return ((hour * 360 + min * 60) + sec);
 }
